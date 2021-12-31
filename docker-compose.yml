@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  todo_frontend:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - todo_frontend:/php-todo
+    links:
+      - db
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: sePret^i
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+volumes:
+  todo_frontend:
+  db:
